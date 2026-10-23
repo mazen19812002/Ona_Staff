@@ -510,27 +510,25 @@
       document.getElementById(tabId).classList.add('active');
     }
 
+    // Load completed list via JSONP to bypass CORS/Redirect blocks on GitHub Pages
     window.addEventListener('DOMContentLoaded', loadCompletedNames);
 
     function loadCompletedNames() {
-      fetch(WEB_APP_URL, {
-        method: 'GET',
-        redirect: 'follow'
-      })
-      .then(response => {
-        if (!response.ok) throw new Error('Network response error');
-        return response.json();
-      })
-      .then(data => {
+      const script = document.createElement('script');
+      script.src = WEB_APP_URL + "?callback=handleJsonResponse";
+      document.body.appendChild(script);
+    }
+
+    // Global Callback for JSONP
+    window.handleJsonResponse = function(data) {
+      if (data && data.result === 'success') {
         renderList('teachersList', data.teachers || []);
         renderList('staffList', data.staff || []);
-      })
-      .catch(err => {
-        console.error('Error fetching data:', err);
+      } else {
         renderList('teachersList', []);
         renderList('staffList', []);
-      });
-    }
+      }
+    };
 
     function renderList(elementId, items) {
       const el = document.getElementById(elementId);
@@ -575,7 +573,7 @@
         payload.notes = document.getElementById('a_notes').value.trim();
       }
 
-      // Using text/plain prevents CORS OPTIONS preflight errors on GitHub Pages
+      // Using text/plain prevents CORS OPTIONS preflight errors
       fetch(WEB_APP_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
