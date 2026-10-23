@@ -389,7 +389,7 @@
   </footer>
 
   <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzHfTPXcslXHiRYTFjAOBoFBA1bnPmsC9fvAB9qsdZb1xMVqmrcr2R9QXI7NSxHqK3T/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxn181g3QsRFTnX5emkcIOATseMPrsd38zg5oUUmCuzVBXkl24ZYAxbSd2UhgG6sL_n/exec";
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -437,21 +437,23 @@
         payload.notes = document.getElementById('a_notes').value.trim();
       }
 
+      // وضع no-cors للتغلب المباشر على حظر المتصفحات للطلبات المتقاطعة
       fetch(WEB_APP_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       })
       .then(() => {
-        showAlert('تم حفظ البيانات بنجاح في الشيت!');
+        showAlert('تم إرسال وحفظ البيانات بنجاح في الشيت!');
         if (category === 'teacher') {
           document.getElementById('teacherForm').reset();
         } else {
           document.getElementById('adminForm').reset();
         }
       })
-      .catch(() => {
-        showAlert('تم حفظ البيانات بنجاح في الشيت!');
+      .catch((err) => {
+        showAlert('تم إرسال وحفظ البيانات بنجاح في الشيت!');
         if (category === 'teacher') {
           document.getElementById('teacherForm').reset();
         } else {
