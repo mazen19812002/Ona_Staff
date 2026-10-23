@@ -513,16 +513,23 @@
     window.addEventListener('DOMContentLoaded', loadCompletedNames);
 
     function loadCompletedNames() {
-      fetch(WEB_APP_URL)
-        .then(res => res.json())
-        .then(data => {
-          renderList('teachersList', data.teachers);
-          renderList('staffList', data.staff);
-        })
-        .catch(() => {
-          document.getElementById('teachersList').innerHTML = '<li>خطأ بالتحميل</li>';
-          document.getElementById('staffList').innerHTML = '<li>خطأ بالتحميل</li>';
-        });
+      fetch(WEB_APP_URL, {
+        method: 'GET',
+        redirect: 'follow'
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Network response error');
+        return response.json();
+      })
+      .then(data => {
+        renderList('teachersList', data.teachers || []);
+        renderList('staffList', data.staff || []);
+      })
+      .catch(err => {
+        console.error('Error fetching data:', err);
+        renderList('teachersList', []);
+        renderList('staffList', []);
+      });
     }
 
     function renderList(elementId, items) {
@@ -535,7 +542,7 @@
           el.appendChild(li);
         });
       } else {
-        el.innerHTML = '<li>لا يوجد إدخالات بعد</li>';
+        el.innerHTML = '<li>لا يوجد مستكملين بعد</li>';
       }
     }
 
@@ -568,7 +575,7 @@
         payload.notes = document.getElementById('a_notes').value.trim();
       }
 
-      // GitHub Pages Compatibility: Text/Plain header avoids CORS preflight OPTIONS issues
+      // Using text/plain prevents CORS OPTIONS preflight errors on GitHub Pages
       fetch(WEB_APP_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
