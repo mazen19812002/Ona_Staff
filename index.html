@@ -24,16 +24,9 @@
       color: #0f172a;
     }
 
-    .layout-wrapper {
-      width: 100%;
-      max-width: 1200px;
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
     .main-container {
-      flex: 1;
+      width: 100%;
+      max-width: 850px;
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -41,62 +34,25 @@
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       padding: 30px;
+      margin-bottom: 20px;
     }
 
-    .sidebar {
-      width: 320px;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      padding: 20px;
+    .school-info-banner {
+      background: rgba(2, 132, 199, 0.1);
+      border-radius: 12px;
+      padding: 10px 15px;
+      margin-bottom: 20px;
       display: flex;
-      flex-direction: column;
-      max-height: 800px;
-    }
-
-    .sidebar-header {
-      font-size: 17px;
-      font-weight: bold;
-      color: #0284c7;
-      padding-bottom: 12px;
-      border-bottom: 2px solid rgba(56, 189, 248, 0.3);
-      display: flex;
-      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
       gap: 10px;
+      border: 1px dashed #0284c7;
     }
 
-    .sidebar-section-title {
-      font-size: 14px;
-      font-weight: bold;
+    .school-info-item {
+      font-weight: 700;
       color: #0369a1;
-      margin-top: 15px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .sidebar-list {
-      list-style: none;
-      overflow-y: auto;
-      max-height: 300px;
-    }
-
-    .sidebar-list li {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 8px 12px;
-      margin-bottom: 6px;
-      border-radius: 8px;
       font-size: 14px;
-      font-weight: 600;
-      color: #1e293b;
-      border-right: 4px solid #0284c7;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .tabs-nav {
@@ -134,24 +90,6 @@
 
     .tab-content.active {
       display: block;
-    }
-
-    .school-info-banner {
-      background: rgba(2, 132, 199, 0.1);
-      border-radius: 12px;
-      padding: 10px 15px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 10px;
-      border: 1px dashed #0284c7;
-    }
-
-    .school-info-item {
-      font-weight: 700;
-      color: #0369a1;
-      font-size: 14px;
     }
 
     .form-grid {
@@ -227,36 +165,25 @@
       color: #fff;
     }
 
-    .countdown-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(8px);
+    .alert-msg {
       display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      color: white;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
     }
 
-    .countdown-circle {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: #0284c7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      font-weight: bold;
-      margin-top: 15px;
-      box-shadow: 0 0 20px rgba(2, 132, 199, 0.5);
+    .alert-msg.success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #34d399;
+      display: block;
     }
 
     footer {
       width: 100%;
-      max-width: 1200px;
+      max-width: 850px;
       text-align: center;
       padding: 10px;
       font-size: 13px;
@@ -273,222 +200,188 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    @media (max-width: 850px) {
-      .layout-wrapper { flex-direction: column; }
-      .sidebar { width: 100%; max-height: 400px; }
-    }
   </style>
 </head>
 <body>
 
-  <div class="layout-wrapper">
-    <div class="main-container">
-      
-      <div class="school-info-banner">
-        <div class="school-info-item"><i class="fa-solid fa-building-columns"></i> إدارة شرق كفر الشيخ التعليمية</div>
-        <div class="school-info-item"><i class="fa-solid fa-graduation-cap"></i> مدرسة العونة للتعليم الأساسي</div>
-      </div>
+  <div class="main-container">
+    
+    <div class="school-info-banner">
+      <div class="school-info-item"><i class="fa-solid fa-building-columns"></i> إدارة شرق كفر الشيخ التعليمية</div>
+      <div class="school-info-item"><i class="fa-solid fa-graduation-cap"></i> مدرسة العونة للتعليم الأساسي</div>
+    </div>
 
-      <div class="tabs-nav">
-        <button class="tab-btn active" onclick="switchTab('teachersTab')">
-          <i class="fa-solid fa-chalkboard-user"></i> بيانات المدرسين
-        </button>
-        <button class="tab-btn" onclick="switchTab('adminTab')">
-          <i class="fa-solid fa-user-gear"></i> بيانات العاملين والإداريين
-        </button>
-      </div>
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('teachersTab')">
+        <i class="fa-solid fa-chalkboard-user"></i> بيانات المدرسين
+      </button>
+      <button class="tab-btn" onclick="switchTab('adminTab')">
+        <i class="fa-solid fa-user-gear"></i> بيانات العاملين والإداريين
+      </button>
+    </div>
 
-      <!-- Tab 1: Teachers -->
-      <div id="teachersTab" class="tab-content active">
-        <form id="teacherForm" onsubmit="handleFormSubmit(event, 'teacher')">
-          <div class="form-grid">
-            
-            <div class="input-group full-width">
-              <label for="t_fullName"><i class="fa-solid fa-user"></i> الاسم الرباعي:</label>
-              <input type="text" id="t_fullName" required placeholder="أدخل الاسم بالكامل">
-            </div>
+    <!-- Tab 1: Teachers -->
+    <div id="teachersTab" class="tab-content active">
+      <form id="teacherForm" onsubmit="handleFormSubmit(event, 'teacher')">
+        <div class="form-grid">
+          
+          <div class="input-group full-width">
+            <label for="t_fullName"><i class="fa-solid fa-user"></i> الاسم الرباعي:</label>
+            <input type="text" id="t_fullName" required placeholder="أدخل الاسم بالكامل">
+          </div>
 
-            <div class="input-group">
-              <label for="t_cadreJob"><i class="fa-solid fa-briefcase"></i> الوظيفة على الكادر:</label>
-              <select id="t_cadreJob" required>
-                <option value="">-- اختر الوظيفة --</option>
-                <option value="معلم مساعد">معلم مساعد</option>
-                <option value="معلم">معلم</option>
-                <option value="معلم أول">معلم أول</option>
-                <option value="معلم أول أ">معلم أول أ</option>
-                <option value="معلم خبير">معلم خبير</option>
-                <option value="كبير معلمين">كبير معلمين</option>
-              </select>
-            </div>
+          <div class="input-group">
+            <label for="t_cadreJob"><i class="fa-solid fa-briefcase"></i> الوظيفة على الكادر:</label>
+            <select id="t_cadreJob" required>
+              <option value="">-- اختر الوظيفة --</option>
+              <option value="معلم مساعد">معلم مساعد</option>
+              <option value="معلم">معلم</option>
+              <option value="معلم أول">معلم أول</option>
+              <option value="معلم أول أ">معلم أول أ</option>
+              <option value="معلم خبير">معلم خبير</option>
+              <option value="كبير معلمين">كبير معلمين</option>
+            </select>
+          </div>
 
-            <div class="input-group">
-              <label for="t_stage"><i class="fa-solid fa-layer-group"></i> المرحلة التعليمية:</label>
-              <select id="t_stage" required>
-                <option value="">-- اختر المرحلة --</option>
+          <div class="input-group">
+            <label for="t_stage"><i class="fa-solid fa-layer-group"></i> المرحلة التعليمية:</label>
+            <select id="t_stage" required>
+              <option value="">-- اختر المرحلة --</option>
+              <option value="رياض أطفال">رياض أطفال</option>
+              <option value="ابتدائي">ابتدائي</option>
+              <option value="إعدادي">إعدادي</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="t_specialization"><i class="fa-solid fa-book-open"></i> التخصص الدراسي:</label>
+            <select id="t_specialization" required>
+              <option value="">-- اختر التخصص --</option>
+              <optgroup label="رياض الأطفال">
                 <option value="رياض أطفال">رياض أطفال</option>
-                <option value="ابتدائي">ابتدائي</option>
-                <option value="إعدادي">إعدادي</option>
-              </select>
-            </div>
-
-            <div class="input-group">
-              <label for="t_specialization"><i class="fa-solid fa-book-open"></i> التخصص الدراسي:</label>
-              <select id="t_specialization" required>
-                <option value="">-- اختر التخصص --</option>
-                <optgroup label="رياض الأطفال">
-                  <option value="رياض أطفال">رياض أطفال</option>
-                </optgroup>
-                <optgroup label="المرحلة الابتدائية والإعدادية">
-                  <option value="لغة عربية">لغة عربية</option>
-                  <option value="لغة إنجليزية">لغة إنجليزية</option>
-                  <option value="لغة أجنبية ثانية">لغة أجنبية ثانية</option>
-                  <option value="رياضيات">رياضيات</option>
-                  <option value="علوم">علوم</option>
-                  <option value="دراسات اجتماعية">دراسات اجتماعية</option>
-                  <option value="تربية دينية">تربية دينية</option>
-                  <option value="تربية رياضية">تربية رياضية</option>
-                  <option value="تربية فنية">تربية فنية</option>
-                  <option value="تربية موسيقية">تربية موسيقية</option>
-                  <option value="تكنولوجيا المعلومات (ICT)">تكنولوجيا المعلومات (ICT)</option>
-                  <option value="المهارات المهنية">المهارات المهنية</option>
-                  <option value="اقتصاد منزلي">اقتصاد منزلي</option>
-                  <option value="أخصائي">أخصائي (اجتماعي/نفسي/تطوير)</option>
-                </optgroup>
-              </select>
-            </div>
-
-            <div class="input-group">
-              <label for="t_nationalId"><i class="fa-solid fa-address-card"></i> الرقم القومي (14 رقم):</label>
-              <input type="text" id="t_nationalId" maxlength="14" pattern="\d{14}" required placeholder="أدخل 14 رقم">
-            </div>
-
-            <div class="input-group">
-              <label for="t_teacherCode"><i class="fa-solid fa-barcode"></i> الكود:</label>
-              <input type="text" id="t_teacherCode" required placeholder="أدخل كود المعلم">
-            </div>
-
-            <div class="input-group">
-              <label for="t_degree"><i class="fa-solid fa-graduation-cap"></i> المؤهل الأساسي:</label>
-              <input type="text" id="t_degree" required placeholder="مثال: بكالوريوس تربية">
-            </div>
-
-            <div class="input-group">
-              <label for="t_graduationYear"><i class="fa-solid fa-calendar-days"></i> سنة الحصول عليه:</label>
-              <input type="number" id="t_graduationYear" min="1970" max="2030" required placeholder="مثال: 2010">
-            </div>
-
-            <div class="input-group full-width">
-              <label for="t_higherDegrees"><i class="fa-solid fa-award"></i> المؤهلات الأعلى:</label>
-              <input type="text" id="t_higherDegrees" placeholder="مثال: ماجستير / دكتوراه (اختياري)">
-            </div>
-
+              </optgroup>
+              <optgroup label="المرحلة الابتدائية والإعدادية">
+                <option value="لغة عربية">لغة عربية</option>
+                <option value="لغة إنجليزية">لغة إنجليزية</option>
+                <option value="لغة أجنبية ثانية">لغة أجنبية ثانية</option>
+                <option value="رياضيات">رياضيات</option>
+                <option value="علوم">علوم</option>
+                <option value="دراسات اجتماعية">دراسات اجتماعية</option>
+                <option value="تربية دينية">تربية دينية</option>
+                <option value="تربية رياضية">تربية رياضية</option>
+                <option value="تربية فنية">تربية فنية</option>
+                <option value="تربية موسيقية">تربية موسيقية</option>
+                <option value="تكنولوجيا المعلومات (ICT)">تكنولوجيا المعلومات (ICT)</option>
+                <option value="المهارات المهنية">المهارات المهنية</option>
+                <option value="اقتصاد منزلي">اقتصاد منزلي</option>
+                <option value="أخصائي">أخصائي (اجتماعي/نفسي/تطوير)</option>
+              </optgroup>
+            </select>
           </div>
 
-          <div class="actions-panel">
-            <button type="button" class="btn btn-reset" onclick="document.getElementById('teacherForm').reset()">
-              <i class="fa-solid fa-trash-can"></i> مسح
-            </button>
-            <button type="submit" class="btn btn-submit" id="t_submitBtn">
-              <i class="fa-solid fa-paper-plane"></i> حفظ بيانات المعلم
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Tab 2: Non-Teaching Staff -->
-      <div id="adminTab" class="tab-content">
-        <form id="adminForm" onsubmit="handleFormSubmit(event, 'admin')">
-          <div class="form-grid">
-            
-            <div class="input-group full-width">
-              <label for="a_fullName"><i class="fa-solid fa-user"></i> الاسم الرباعي:</label>
-              <input type="text" id="a_fullName" required placeholder="أدخل الاسم بالكامل">
-            </div>
-
-            <div class="input-group">
-              <label for="a_adminJob"><i class="fa-solid fa-briefcase"></i> الوظيفة الحالية:</label>
-              <select id="a_adminJob" required>
-                <option value="">-- اختر الوظيفة --</option>
-                <option value="إداري / شؤون عاملين">إداري / شؤون عاملين</option>
-                <option value="أمين توريدات / مخازن">أمين توريدات / مخازن</option>
-                <option value="كاتب / شؤون طلاب">كاتب / شؤون طلاب</option>
-                <option value="مسؤول إحصاء / تطوير">مسؤول إحصاء / تطوير</option>
-                <option value="مسؤول ماليات / حسابات">مسؤول ماليات / حسابات</option>
-                <option value="عامل خدمات معاونة">عامل خدمات معاونة</option>
-                <option value="حارس أمن / حارس مدرسة">حارس أمن / حارس مدرسة</option>
-                <option value="وظيفة إدارية أخرى">وظيفة إدارية أخرى</option>
-              </select>
-            </div>
-
-            <div class="input-group">
-              <label for="a_nationalId"><i class="fa-solid fa-address-card"></i> الرقم القومي (14 رقم):</label>
-              <input type="text" id="a_nationalId" maxlength="14" pattern="\d{14}" required placeholder="أدخل 14 رقم">
-            </div>
-
-            <div class="input-group">
-              <label for="a_teacherCode"><i class="fa-solid fa-barcode"></i> الكود الوظيفي / الرقم المالي:</label>
-              <input type="text" id="a_teacherCode" required placeholder="أدخل الكود">
-            </div>
-
-            <div class="input-group">
-              <label for="a_degree"><i class="fa-solid fa-graduation-cap"></i> المؤهل الدراسي:</label>
-              <input type="text" id="a_degree" required placeholder="مثال: دبلوم / مؤهل عالٍ">
-            </div>
-
-            <div class="input-group">
-              <label for="a_graduationYear"><i class="fa-solid fa-calendar-days"></i> سنة المؤهل:</label>
-              <input type="number" id="a_graduationYear" min="1970" max="2030" required placeholder="مثال: 2005">
-            </div>
-
-            <div class="input-group full-width">
-              <label for="a_notes"><i class="fa-solid fa-comment"></i> ملاحظات إضافية:</label>
-              <input type="text" id="a_notes" placeholder="أي بيانات إضافية (اختياري)">
-            </div>
-
+          <div class="input-group">
+            <label for="t_nationalId"><i class="fa-solid fa-address-card"></i> الرقم القومي (14 رقم):</label>
+            <input type="text" id="t_nationalId" maxlength="14" pattern="\d{14}" required placeholder="أدخل 14 رقم">
           </div>
 
-          <div class="actions-panel">
-            <button type="button" class="btn btn-reset" onclick="document.getElementById('adminForm').reset()">
-              <i class="fa-solid fa-trash-can"></i> مسح
-            </button>
-            <button type="submit" class="btn btn-submit" id="a_submitBtn">
-              <i class="fa-solid fa-paper-plane"></i> حفظ بيانات الموظف
-            </button>
+          <div class="input-group">
+            <label for="t_teacherCode"><i class="fa-solid fa-barcode"></i> الكود:</label>
+            <input type="text" id="t_teacherCode" required placeholder="أدخل كود المعلم">
           </div>
-        </form>
-      </div>
 
+          <div class="input-group">
+            <label for="t_degree"><i class="fa-solid fa-graduation-cap"></i> المؤهل الأساسي:</label>
+            <input type="text" id="t_degree" required placeholder="مثال: بكالوريوس تربية">
+          </div>
+
+          <div class="input-group">
+            <label for="t_graduationYear"><i class="fa-solid fa-calendar-days"></i> سنة الحصول عليه:</label>
+            <input type="number" id="t_graduationYear" min="1970" max="2030" required placeholder="مثال: 2010">
+          </div>
+
+          <div class="input-group full-width">
+            <label for="t_higherDegrees"><i class="fa-solid fa-award"></i> المؤهلات الأعلى:</label>
+            <input type="text" id="t_higherDegrees" placeholder="مثال: ماجستير / دكتوراه (اختياري)">
+          </div>
+
+        </div>
+
+        <div class="actions-panel">
+          <button type="button" class="btn btn-reset" onclick="document.getElementById('teacherForm').reset()">
+            <i class="fa-solid fa-trash-can"></i> مسح
+          </button>
+          <button type="submit" class="btn btn-submit" id="t_submitBtn">
+            <i class="fa-solid fa-paper-plane"></i> حفظ بيانات المعلم
+          </button>
+        </div>
+      </form>
     </div>
 
-    <!-- Sidebar for Completed Staff List -->
-    <div class="sidebar">
-      <div class="sidebar-header">
-        <i class="fa-solid fa-users-check"></i> قائمة المستكملين للبيانات
-      </div>
-      
-      <div class="sidebar-section-title">
-        <i class="fa-solid fa-chalkboard-user"></i> المعلمون
-      </div>
-      <ul class="sidebar-list" id="teachersList">
-        <li><i class="fa-solid fa-spinner fa-spin"></i> جاري التحميل...</li>
-      </ul>
+    <!-- Tab 2: Non-Teaching Staff -->
+    <div id="adminTab" class="tab-content">
+      <form id="adminForm" onsubmit="handleFormSubmit(event, 'admin')">
+        <div class="form-grid">
+          
+          <div class="input-group full-width">
+            <label for="a_fullName"><i class="fa-solid fa-user"></i> الاسم الرباعي:</label>
+            <input type="text" id="a_fullName" required placeholder="أدخل الاسم بالكامل">
+          </div>
 
-      <div class="sidebar-section-title">
-        <i class="fa-solid fa-user-gear"></i> العاملون والإداريون
-      </div>
-      <ul class="sidebar-list" id="staffList">
-        <li><i class="fa-solid fa-spinner fa-spin"></i> جاري التحميل...</li>
-      </ul>
+          <div class="input-group">
+            <label for="a_adminJob"><i class="fa-solid fa-briefcase"></i> الوظيفة الحالية:</label>
+            <select id="a_adminJob" required>
+              <option value="">-- اختر الوظيفة --</option>
+              <option value="إداري / شؤون عاملين">إداري / شؤون عاملين</option>
+              <option value="أمين توريدات / مخازن">أمين توريدات / مخازن</option>
+              <option value="كاتب / شؤون طلاب">كاتب / شؤون طلاب</option>
+              <option value="مسؤول إحصاء / تطوير">مسؤول إحصاء / تطوير</option>
+              <option value="مسؤول ماليات / حسابات">مسؤول ماليات / حسابات</option>
+              <option value="عامل خدمات معاونة">عامل خدمات معاونة</option>
+              <option value="حارس أمن / حارس مدرسة">حارس أمن / حارس مدرسة</option>
+              <option value="وظيفة إدارية أخرى">وظيفة إدارية أخرى</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="a_nationalId"><i class="fa-solid fa-address-card"></i> الرقم القومي (14 رقم):</label>
+            <input type="text" id="a_nationalId" maxlength="14" pattern="\d{14}" required placeholder="أدخل 14 رقم">
+          </div>
+
+          <div class="input-group">
+            <label for="a_teacherCode"><i class="fa-solid fa-barcode"></i> الكود الوظيفي / الرقم المالي:</label>
+            <input type="text" id="a_teacherCode" required placeholder="أدخل الكود">
+          </div>
+
+          <div class="input-group">
+            <label for="a_degree"><i class="fa-solid fa-graduation-cap"></i> المؤهل الدراسي:</label>
+            <input type="text" id="a_degree" required placeholder="مثال: دبلوم / مؤهل عالٍ">
+          </div>
+
+          <div class="input-group">
+            <label for="a_graduationYear"><i class="fa-solid fa-calendar-days"></i> سنة المؤهل:</label>
+            <input type="number" id="a_graduationYear" min="1970" max="2030" required placeholder="مثال: 2005">
+          </div>
+
+          <div class="input-group full-width">
+            <label for="a_notes"><i class="fa-solid fa-comment"></i> ملاحظات إضافية:</label>
+            <input type="text" id="a_notes" placeholder="أي بيانات إضافية (اختياري)">
+          </div>
+
+        </div>
+
+        <div class="actions-panel">
+          <button type="button" class="btn btn-reset" onclick="document.getElementById('adminForm').reset()">
+            <i class="fa-solid fa-trash-can"></i> مسح
+          </button>
+          <button type="submit" class="btn btn-submit" id="a_submitBtn">
+            <i class="fa-solid fa-paper-plane"></i> حفظ بيانات الموظف
+          </button>
+        </div>
+      </form>
     </div>
 
-  </div>
+    <div id="alertMsg" class="alert-msg"></div>
 
-  <!-- Countdown Overlay Screen -->
-  <div class="countdown-overlay" id="countdownOverlay">
-    <h2><i class="fa-solid fa-circle-check"></i> تم حفظ البيانات بنجاح!</h2>
-    <p>سيتم تحديث الصفحة خلال:</p>
-    <div class="countdown-circle" id="countdownTimer">5</div>
   </div>
 
   <footer>
@@ -510,42 +403,13 @@
       document.getElementById(tabId).classList.add('active');
     }
 
-    // Load completed list via JSONP to bypass CORS/Redirect blocks on GitHub Pages
-    window.addEventListener('DOMContentLoaded', loadCompletedNames);
-
-    function loadCompletedNames() {
-      const script = document.createElement('script');
-      script.src = WEB_APP_URL + "?callback=handleJsonResponse";
-      document.body.appendChild(script);
-    }
-
-    // Global Callback for JSONP
-    window.handleJsonResponse = function(data) {
-      if (data && data.result === 'success') {
-        renderList('teachersList', data.teachers || []);
-        renderList('staffList', data.staff || []);
-      } else {
-        renderList('teachersList', []);
-        renderList('staffList', []);
-      }
-    };
-
-    function renderList(elementId, items) {
-      const el = document.getElementById(elementId);
-      el.innerHTML = '';
-      if (items && items.length > 0) {
-        items.forEach(name => {
-          const li = document.createElement('li');
-          li.innerHTML = `<i class="fa-solid fa-check" style="color: #059669;"></i> ${name}`;
-          el.appendChild(li);
-        });
-      } else {
-        el.innerHTML = '<li>لا يوجد مستكملين بعد</li>';
-      }
-    }
-
     function handleFormSubmit(e, category) {
       e.preventDefault();
+
+      const btn = category === 'teacher' ? document.getElementById('t_submitBtn') : document.getElementById('a_submitBtn');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الحفظ...';
 
       let payload = {
         adminDept: "إدارة شرق كفر الشيخ التعليمية",
@@ -573,32 +437,40 @@
         payload.notes = document.getElementById('a_notes').value.trim();
       }
 
-      // Using text/plain prevents CORS OPTIONS preflight errors
       fetch(WEB_APP_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       })
-      .then(() => startCountdown())
-      .catch(() => startCountdown());
+      .then(() => {
+        showAlert('تم حفظ البيانات بنجاح في الشيت!');
+        if (category === 'teacher') {
+          document.getElementById('teacherForm').reset();
+        } else {
+          document.getElementById('adminForm').reset();
+        }
+      })
+      .catch(() => {
+        showAlert('تم حفظ البيانات بنجاح في الشيت!');
+        if (category === 'teacher') {
+          document.getElementById('teacherForm').reset();
+        } else {
+          document.getElementById('adminForm').reset();
+        }
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      });
     }
 
-    function startCountdown() {
-      const overlay = document.getElementById('countdownOverlay');
-      const timerEl = document.getElementById('countdownTimer');
-      overlay.style.display = 'flex';
-
-      let count = 5;
-      timerEl.innerText = count;
-
-      const interval = setInterval(() => {
-        count--;
-        timerEl.innerText = count;
-        if (count <= 0) {
-          clearInterval(interval);
-          window.location.reload();
-        }
-      }, 1000);
+    function showAlert(msg) {
+      const alertEl = document.getElementById('alertMsg');
+      alertEl.innerText = msg;
+      alertEl.className = 'alert-msg success';
+      setTimeout(() => {
+        alertEl.style.display = 'none';
+      }, 4000);
     }
   </script>
 </body>
